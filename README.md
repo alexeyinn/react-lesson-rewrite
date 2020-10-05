@@ -1,2 +1,1 @@
-# React-lesson-rewrite
-Created with CodeSandbox
+Just React lesson rewrite with hooks and redux from - https://reactjs.org/tutorial/tutorial.html#setup-option-2-local-development-environment
