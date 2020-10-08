@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 function Square(props) {
-  return <button className="square">{props.value}</button>;
+  const [tag, setTag] = useState({ value: null });
+
+  return (
+    <button className="square" onClick={() => setTag({ value: "X" })}>
+      {tag.value}
+    </button>
+  );
 }
 
 function Board() {
@@ -47,5 +53,3 @@ export default function Game() {
     </div>
   );
 }
-
-// ========================================
