@@ -2,18 +2,24 @@ import React, { useState } from "react";
 import "./styles.css";
 
 function Square(props) {
-  const [tag, setTag] = useState({ value: null });
-
   return (
-    <button className="square" onClick={() => setTag({ value: "X" })}>
-      {tag.value}
+    <button className="square" onClick={() => props.onClick()}>
+      {props.value}
     </button>
   );
 }
 
 function Board() {
+  const [filled, setFilled] = useState({ squares: Array(9).fill(null) });
+
+  function handleClick(i) {
+    const squares = filled.squares.slice();
+    squares[i] = "X";
+    setFilled({ squares: squares });
+  }
+
   function renderSquare(i) {
-    return <Square value={i} />;
+    return <Square value={filled.squares[i]} onClick={() => handleClick(i)} />;
   }
 
   const status = "Next player: X";
