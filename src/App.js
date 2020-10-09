@@ -3,26 +3,29 @@ import "./styles.css";
 
 function Square(props) {
   return (
-    <button className="square" onClick={() => props.onClick()}>
+    <button className="square" onClick={props.onClick}>
       {props.value}
     </button>
   );
 }
 
 function Board() {
-  const [filled, setFilled] = useState({ squares: Array(9).fill(null) });
+  const [filled, setFilled] = useState({
+    squares: Array(9).fill(null),
+    xIsNext: true
+  });
 
   function handleClick(i) {
     const squares = filled.squares.slice();
-    squares[i] = "X";
-    setFilled({ squares: squares });
+    squares[i] = filled.xIsNext ? "X" : "0";
+    setFilled({ squares: squares, xIsNext: !filled.xIsNext });
   }
 
   function renderSquare(i) {
     return <Square value={filled.squares[i]} onClick={() => handleClick(i)} />;
   }
 
-  const status = "Next player: X";
+  const status = "Next player: " + (filled.xIsNext ? "X" : "0");
 
   return (
     <div>
