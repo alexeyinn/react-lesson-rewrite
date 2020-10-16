@@ -47,7 +47,7 @@ export default function Game() {
 
   function handleClick(i) {
     const history = rec.history;
-    const current = history[history.lenght - 1];
+    const current = history[history.length - 1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -59,19 +59,19 @@ export default function Game() {
           squares: squares
         }
       ]),
-      xIsNext: !setRec.xIsNext
+      xIsNext: !rec.xIsNext
     });
   }
 
   const history = rec.history;
-  const current = history[history.lenght - 1];
+  const current = history[history.length - 1];
   const winner = calculateWinner(current.squares);
 
   let status;
   if (winner) {
     status = "Winner is " + winner;
   } else {
-    status = "Next turn: " + (setRec.xIsNext ? "X" : "0");
+    status = "Next turn: " + (rec.xIsNext ? "X" : "0");
   }
 
   return (
