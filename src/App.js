@@ -35,18 +35,19 @@ function Board(props) {
   );
 }
 
-export default function Game() {
+export default function Game(props) {
   const [rec, setRec] = useState({
     history: [
       {
         squares: Array(9).fill(null)
       }
     ],
+    stepNumber: 0,
     xIsNext: true
   });
 
   function handleClick(i) {
-    const history = rec.history;
+    const history = rec.history.slice(0, rec.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
@@ -59,18 +60,26 @@ export default function Game() {
           squares: squares
         }
       ]),
+      stepNumber: history.length,
       xIsNext: !rec.xIsNext
     });
   }
 
+  function jumpTo(step) {
+    setRec({
+      stepNumber: step,
+      xIsNext: step % 2 === 0
+    });
+  }
+
   const history = rec.history;
-  const current = history[history.length - 1];
+  const current = history[rec.stepNumber];
   const winner = calculateWinner(current.squares);
 
   const moves = history.map((step, move) => {
     const desc = move ? "Go to turn #" + move : "To the start of a game";
     return (
-      <li>
+      <li key={move}>
         <button onClick={() => jumpTo(move)}>{desc}</button>
       </li>
     );
