@@ -67,6 +67,7 @@ export default function Game(props) {
 
   function jumpTo(step) {
     setRec({
+      ...rec,
       stepNumber: step,
       xIsNext: step % 2 === 0
     });
