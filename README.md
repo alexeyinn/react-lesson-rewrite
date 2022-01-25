@@ -1,3 +1,4 @@
-Just React lesson rewrite with hooks from oficial library's site - https://reactjs.org/tutorial/tutorial.html#setup-option-2-local-development-environment
+Реймек игры крестики-нолики из официальной документации React.js - https://reactjs.org/tutorial/tutorial.html#setup-option-2-local-development-environment
+Просто переписал ее с классовых компонентов, на функциональные, когда только начинал изучать React.js.
 
-Temporary external link on working project - https://ncxox.csb.app/
+Временная ссылка на демо проекта - https://ncxox.csb.app/
